@@ -56,7 +56,10 @@ public class GoogleTest {
     	   
     	   System.out.println("checkbox is selected");
     	   
-    	   Thread.sleep(5000);
+    	   Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)							
+    				.withTimeout(20, TimeUnit.SECONDS) 			
+    				.pollingEvery(5, TimeUnit.SECONDS) 			
+    				.ignoring(NoSuchElementException.class);
     		
     	   WebElement currency =driver.findElement(By.xpath("//span[text()='Select Currency']"));
     	   
